@@ -15,11 +15,11 @@ cloudinary.config({
 
 
     // Configuration
-    cloudinary.config({ 
-        cloud_name: 'dhizzcvba', 
-        api_key: '356155323162194', 
-        api_secret: '<your_api_secret>' // Click 'View Credentials' below to copy your API secret
-    });
+    // cloudinary.config({ 
+    //     cloud_name: 'dhizzcvba', 
+    //     api_key: '356155323162194', 
+    //     api_secret: '<your_api_secret>' // Click 'View Credentials' below to copy your API secret
+    // });
 
     // Upload an image
     const uploadOnCloudinary = async (localFilePath/*parameter*/)=>{
@@ -32,8 +32,10 @@ cloudinary.config({
                 }
             )
              //file has been uploaded successfully
-             console.log('file is upload on cloudinary',responce.url);
-             return response;
+            // console.log('file is upload on cloudinary',responce.url);
+            fs.unlinkSync(localFilePath)
+             return responce;
+            
         }catch(error){
             fs.unlinkSync(localFilePath)//remove the locally saved tempporary file as the upload operation got failed
             return null;
